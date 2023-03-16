@@ -1,10 +1,15 @@
 import Game from "./Game";
 
-window.addEventListener('load', () => {
-  // canvas setup
-  const canvas = document.getElementById('canvas');
-  const ctx = canvas.getContext('2d');
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
 
+// show loading text until everything is ready
+ctx.fillStyle = '#fff';
+ctx.font = 'bold 38px Helvetica';
+ctx.textAlign = 'center';
+ctx.fillText('LOADING...', canvas.width * 0.5, canvas.height * 0.6);
+
+window.addEventListener('load', () => {
   canvas.width = 1000;
   canvas.height = 500;
 
