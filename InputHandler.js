@@ -11,6 +11,8 @@
           this.game.player.shootTop();
         } else if (e.key === 'd') {
           this.game.debug = !this.game.debug;
+        } else if (e.key === 'Escape') {
+          this.game.paused = !this.game.paused;
         }
 
         // reset or go to main menu during game over state

@@ -52,10 +52,14 @@ export default class Game {
         this.timeLimit = 30000;
   
         this.speed = 1;
-  
+
+        // game states
         this.gameOver = false;
+        this.paused = false;
+        
         this.score = 0;
         this.winningScore = 80;
+
       };
 
       this.debug = false;

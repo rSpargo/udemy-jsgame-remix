@@ -23,7 +23,9 @@ window.addEventListener('load', () => {
     lastTime = timeStamp;
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     game.draw(ctx);
-    game.update(deltaTime);
+    if (!game.paused) {
+      game.update(deltaTime);
+    }
     requestAnimationFrame(animate);
   }
   animate(0);

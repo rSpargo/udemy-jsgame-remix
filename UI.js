@@ -15,8 +15,16 @@ export default class UI {
       // score
       context.fillText(`Score: ${this.game.score}`, 20, 40);
       // timer
-      const formattedTime = ((this.game.timeLimit * 0.001) - (this.game.gameTime * 0.001)).toFixed(1);
+      const formattedTime = (!this.game.gameOver ? (this.game.timeLimit * 0.001) - (this.game.gameTime * 0.001): 0).toFixed(1);
       context.fillText(`Timer: ${formattedTime}`, 20, 100);
+      // pause
+      if (this.game.paused) {
+        context.textAlign = 'center';
+        context.font = `80px ${this.fontFamily}`;
+        context.fillText('PAUSED', this.game.width * 0.5, this.game.height * 0.5 - 20);
+        context.font = `25px Helvetica`;
+        context.fillText('Press ESC to continue.', this.game.width * 0.5, this.game.height * 0.5 + 20);
+      }
       // game over messages
       if (this.game.gameOver) {
         context.textAlign = 'center';
