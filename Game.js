@@ -34,28 +34,33 @@ export default class Game {
       this.keys = [];
       this.shield = new Shield(this);
 
-      this.ammo = 20;
-      this.maxAmmo = 50;
-      this.ammoTimer = 0;
-      this.ammoInterval = 350;
-
-      this.particles = [];
-      this.explosions = [];
-
-      this.enemies = [];
-      this.enemyTimer = 0;
-      this.enemyInterval = 2000;
-
-      this.gameTime = 0;
-      this.timeLimit = 30000;
-
-      this.speed = 1;
-
-      this.gameOver = false;
-      this.score = 0;
-      this.winningScore = 80;
+      // initialize game values
+      this.initialize = () => {
+        this.ammo = 20;
+        this.maxAmmo = 50;
+        this.ammoTimer = 0;
+        this.ammoInterval = 350;
+  
+        this.particles = [];
+        this.explosions = [];
+  
+        this.enemies = [];
+        this.enemyTimer = 0;
+        this.enemyInterval = 2000;
+  
+        this.gameTime = 0;
+        this.timeLimit = 30000;
+  
+        this.speed = 1;
+  
+        this.gameOver = false;
+        this.score = 0;
+        this.winningScore = 80;
+      };
 
       this.debug = false;
+
+      this.initialize();
     }
     update(deltaTime) {
       if (!this.gameOver) {
@@ -193,4 +198,7 @@ export default class Game {
         rect1.height + rect1.y > rect2.y
       )
     }
+
+    // handle game reset
+    reset() { this.initialize(); } 
   }

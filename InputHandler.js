@@ -12,6 +12,15 @@
         } else if (e.key === 'd') {
           this.game.debug = !this.game.debug;
         }
+
+        // reset or go to main menu during game over state
+        if (this.game.gameOver) {
+          if (e.key === 'y') {
+            this.game.reset();
+          } else if (e.key === 'n') {
+            // take back to main menu
+          }
+        }
       });
       window.addEventListener('keyup', (e) => {
         if (this.game.keys.includes(e.key)) {

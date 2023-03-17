@@ -15,24 +15,29 @@ export default class UI {
       // score
       context.fillText(`Score: ${this.game.score}`, 20, 40);
       // timer
-      const formattedTime = (this.game.gameTime * 0.001).toFixed(1);
+      const formattedTime = ((this.game.timeLimit * 0.001) - (this.game.gameTime * 0.001)).toFixed(1);
       context.fillText(`Timer: ${formattedTime}`, 20, 100);
       // game over messages
       if (this.game.gameOver) {
         context.textAlign = 'center';
         let message1;
         let message2;
+        let retryMessage;
         if (this.game.score > this.game.winningScore) {
           message1 = 'Most Wondrous!';
           message2 = 'Well done explorer!';
+          retryMessage = 'Play again? (Y/N)';
         } else {
           message1 = 'Blazes!';
           message2 = 'Get my repair kit and try again...';
+          retryMessage = 'Try again? (Y/N)';
         }
         context.font = `80px ${this.fontFamily}`;
         context.fillText(message1, this.game.width * 0.5, this.game.height * 0.5 - 20);
         context.font = `25px Helvetica`;
         context.fillText(message2, this.game.width * 0.5, this.game.height * 0.5 + 20);
+        context.font = '20px Helvetica';
+        context.fillText(retryMessage, this.game.width * 0.5, this.game.height * 0.5 + 60);
       }
       // ammo
       if (this.game.player.powerUp) { context.fillStyle = '#ffffbd'; }
