@@ -3,6 +3,7 @@ import Game from "./Game";
 // globals
 const WIDTH = 1000;
 const HEIGHT = 500;
+const FPS = 60;
 
 const startGame = () => {
   const canvas = document.getElementById('canvas');
@@ -12,14 +13,20 @@ const startGame = () => {
 
   const game = new Game(canvas.width, canvas.height);
 
+  // game loop
+  let fpsInterval = 1000 / FPS;
   let then = performance.now();
   function animate(timeStamp) {
-    const deltaTime = timeStamp - then;
-    then = timeStamp;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    game.draw(ctx);
-    if (!game.paused) {
-      game.update(deltaTime);
+    let deltaTime = timeStamp - then;
+    // throttle FPS to minimum variable (default 60)
+    if (deltaTime > fpsInterval) {
+      console.log(deltaTime);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      game.draw(ctx);
+      if (!game.paused) {
+        game.update(deltaTime);
+      }
+      then = timeStamp;
     }
     requestAnimationFrame(animate);
   }
