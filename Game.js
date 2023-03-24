@@ -204,5 +204,5 @@ export default class Game {
     }
 
     // handle game reset
-    reset() { this.initialize(); } 
+    reset() { this.initialize(); }
   }

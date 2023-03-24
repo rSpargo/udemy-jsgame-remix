@@ -1,32 +1,45 @@
 import Game from "./Game";
 
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+// globals
+const WIDTH = 1000;
+const HEIGHT = 500;
 
-// show loading text until everything is ready
-ctx.fillStyle = '#fff';
-ctx.font = 'bold 38px Helvetica';
-ctx.textAlign = 'center';
-ctx.fillText('LOADING...', canvas.width * 0.5, canvas.height * 0.6);
+const startGame = () => {
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = WIDTH;
+  canvas.height = HEIGHT;
 
-window.addEventListener('load', () => {
-  canvas.width = 1000;
-  canvas.height = 500;
-
-  // instantiates new game on page load
   const game = new Game(canvas.width, canvas.height);
-  
-  // handles animation loop
-  let lastTime = 0;
+
+  let then = performance.now();
   function animate(timeStamp) {
-    const deltaTime = timeStamp - lastTime;
-    lastTime = timeStamp;
+    const deltaTime = timeStamp - then;
+    then = timeStamp;
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     game.draw(ctx);
-    if (!game.paused) {
-      game.update(deltaTime);
-    }
+    game.update(deltaTime);
     requestAnimationFrame(animate);
   }
   animate(0);
+};
+
+// window.addEventListener('load', () => {
+//   const titleScreen = document.getElementById('title-screen');
+//   titleScreen.width = WIDTH;
+//   titleScreen.height = HEIGHT;
+// });
+
+const playButton = document.getElementById('play-button');
+playButton.addEventListener('click', (e) => {
+  // turns off title screen; turns on game scene
+  toggleScreen('title-screen', false);
+  toggleScreen('canvas', true);
+  startGame();
 });
+
+
+const toggleScreen = (id, toggle) => {
+  const element = document.getElementById(id);
+  element.style.display = toggle ? 'block' : 'none';
+}

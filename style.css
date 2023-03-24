@@ -20,6 +20,7 @@
 }
 
 #canvas {
+  display: none;
   border: 5px solid black;
   position: absolute;
   top: 50%;
@@ -29,6 +30,10 @@
   max-height: 100%;
   background-color: #414141;
   font-family: 'Tilt Prism', cursive;
+}
+
+#title-screen {
+  display: block;
 }
 
 .assets {
