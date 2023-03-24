@@ -16,9 +16,11 @@ const startGame = () => {
   function animate(timeStamp) {
     const deltaTime = timeStamp - then;
     then = timeStamp;
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     game.draw(ctx);
-    game.update(deltaTime);
+    if (!game.paused) {
+      game.update(deltaTime);
+    }
     requestAnimationFrame(animate);
   }
   animate(0);
