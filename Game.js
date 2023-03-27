@@ -137,9 +137,6 @@ export default class Game {
               if (!this.gameOver) {
                 this.score += enemy.score;
               }
-              // if (this.score > this.winningScore) {
-              //   this.gameOver = true;
-              // }
             }
           }
         });

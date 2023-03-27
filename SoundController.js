@@ -10,6 +10,7 @@ export default class SoundController {
     }
     play(soundKey) {
       soundKey.currentTime = 0;
+      soundKey.volume = 0.25;
       soundKey.play();
     }
   }

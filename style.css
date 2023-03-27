@@ -19,8 +19,7 @@
   -webkit-text-size-adjust: 100%;
 }
 
-#canvas {
-  display: none;
+.display-element {
   border: 5px solid black;
   position: absolute;
   top: 50%;
@@ -29,6 +28,10 @@
   max-width: 100%;
   max-height: 100%;
   background-color: #414141;
+}
+
+#canvas {
+  display: none;
   font-family: 'Tilt Prism', cursive;
 }
 

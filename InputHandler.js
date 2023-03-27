@@ -1,3 +1,5 @@
+ import { restartGame } from "./main";
+ 
  export default class InputHandler {
     constructor(game) {
       this.game = game;
@@ -21,6 +23,7 @@
             this.game.reset();
           } else if (e.key === 'n') {
             // take back to main menu
+            restartGame();
           }
         }
       });
