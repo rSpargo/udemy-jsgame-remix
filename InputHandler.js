@@ -1,4 +1,4 @@
- import { restartGame } from "./main";
+ import { toggleScreen } from "./main";
  
  export default class InputHandler {
     constructor(game) {
@@ -23,7 +23,8 @@
             this.game.reset();
           } else if (e.key === 'n') {
             // take back to main menu
-            restartGame();
+            toggleScreen('canvas', false);
+            toggleScreen('title-screen', true);
           }
         }
       });
