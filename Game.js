@@ -49,7 +49,7 @@ export default class Game {
         this.enemyInterval = 2000;
   
         this.gameTime = 0;
-        this.timeLimit = 5000;
+        this.timeLimit = 30000;
   
         this.speed = 1;
 
