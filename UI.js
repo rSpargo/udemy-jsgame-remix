@@ -52,6 +52,11 @@ export default class UI {
       for (let i = 0; i < this.game.ammo; i++) {
         context.fillRect(20 + 5 * i, 50, 3, 20);
       }
+      // show fps on debug
+      if (this.game.debug) {
+        context.font = '12px Helvetica';
+        context.fillText(`${this.game.fps} FPS`, this.game.width * 0.94, 20);
+      }
       context.restore();
     }
   }

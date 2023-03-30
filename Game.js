@@ -34,6 +34,8 @@ export default class Game {
       this.keys = [];
       this.shield = new Shield(this);
 
+      this.fps = 0;
+
       // initialize game values
       this.initialize = () => {
         this.ammo = 20;
@@ -81,6 +83,11 @@ export default class Game {
         this.ammoTimer = 0;
       } else {
         this.ammoTimer += deltaTime;
+      }
+
+      // calculate fps for debug
+      if (this.debug) {
+        this.fps = Math.floor(1000 / deltaTime);
       }
 
       // handle shield
